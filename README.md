@@ -8,13 +8,34 @@ In that mod you can use a specialized tool to carve handholds into stone, sandst
 
 ## Noticeable Differences
 The code has been completely rewritten from scratch in order to make some significant changes.
-- Instead of adding a new tool, handholds_redo lets you use your normal pickaxes by right-clicking
-- Handholds can now be carved into a lot more materials including nodes from various different mods
-- Handholds can now be carved into multiple sides of the same node
-- Handholds can now be carved into the bottom face of a node, allowing you to climb on the ceiling
-- Mod authors can now mark nodes as carveable more easily
-- Mod authors can now assign a climbing pick ability to custom tools
-- On a technical note, handhold nodes are now wallmounted and attached, meaning they don't need to be synced with their neighbouring nodes anymore
+* Instead of adding a new tool, handholds_redo lets you use your normal pickaxes by right-clicking
+* Handholds can now be carved into a lot more materials including nodes from various different mods and subgames
+* Handholds can now be carved into multiple sides of the same node
+* Handholds can now be carved into the bottom face of a node, allowing you to climb on the ceiling
+* Mod authors can now mark nodes as carveable more easily
+* Mod authors can now assign a climbing pick ability to custom tools
+* On a technical note, handhold nodes are now wallmounted and attached, meaning they don't need to be synced with their neighbouring nodes anymore
+
+## Mod Support
+### Supported Subgames
+* Minetest Game
+* MineClone 2
+* Realtest MT5
+
+### Supported Pickaxes from other mods
+* moreores
+* mobs_monster
+* lavastuff
+* obsidianstuff
+
+### Supported Nodes from other mods
+* moreores
+* technic
+* bakedclay
+* caverealms
+* df_caverns
+* pedology
+* gloopblocks
 
 ## Modding Capabilities
 __Adding a carveable node__:

@@ -1,17 +1,34 @@
+-- Minetest Game
 local mod_default = minetest.get_modpath("default") ~= nil
+
+-- MineClone 2
+local mod_mcl_tools = minetest.get_modpath("mcl_tools") ~= nil
+local mod_mcl_core = minetest.get_modpath("mcl_core") ~= nil
 local mod_moreores = minetest.get_modpath("moreores") ~= nil
+
+-- Realtest MT5
+local mod_instruments = minetest.get_modpath("instruments") ~= nil
+local mod_grounds = minetest.get_modpath("grounds") ~= nil
+local mod_ores = minetest.get_modpath("ores") ~= nil
+local is_realtest = mod_instruments
+
+-- various mods
 local mod_technic_worldgen = minetest.get_modpath("technic_worldgen") ~= nil
 local mod_bakedclay = minetest.get_modpath("bakedclay") ~= nil
 local mod_mobs_monster = minetest.get_modpath("mobs_monster") ~= nil
+local mod_lavastuff = minetest.get_modpath("lavastuff") ~= nil
+local mod_obsidianstuff = minetest.get_modpath("obsidianstuff") ~= nil
 local mod_caverealms = minetest.get_modpath("caverealms") ~= nil
 local mod_df_mapitems = minetest.get_modpath("df_mapitems") ~= nil
 local mod_df_underworld_items = minetest.get_modpath("df_underworld_items") ~= nil
 local mod_pedology = minetest.get_modpath("pedology") ~= nil
+local mod_gloopblocks = minetest.get_modpath("gloopblocks") ~= nil
 
 local tools = { }
 local nodes = { }
 
-if mod_default then
+-- Minetest Game
+if mod_default and not is_realtest then
 	tools["default:pick_wood"] = 1
 	tools["default:pick_stone"] = 2
 	tools["default:pick_bronze"] = 3
@@ -53,6 +70,84 @@ if mod_default then
 	nodes["default:stone_with_diamond"] = 3
 end
 
+-- MineClone 2
+if mod_mcl_tools then
+	tools["mcl_tools:pick_wood"] = 1
+	tools["mcl_tools:pick_stone"] = 3
+	tools["mcl_tools:pick_iron"] = 4
+	tools["mcl_tools:pick_gold"] = 2
+	tools["mcl_tools:pick_diamond"] = 5
+end
+
+if mod_mcl_core then
+	nodes["mcl_core:stone"] = 1
+	nodes["mcl_core:stone_with_coal"] = 1
+	nodes["mcl_core:stone_with_iron"] = 3
+	nodes["mcl_core:stone_with_gold"] = 4
+	nodes["mcl_core:stone_with_redstone"] = 4
+	nodes["mcl_core:stone_with_redstone_lit"] = 4
+	nodes["mcl_core:stone_with_lapis"] = 3
+	nodes["mcl_core:stone_with_emerald"] = 4
+	nodes["mcl_core:stone_with_diamond"] = 4
+	nodes["mcl_core:stonebrick"] = 1
+	nodes["mcl_core:stonebrickcarved"] = 1
+	nodes["mcl_core:stonebrickcracked"] = 1
+	nodes["mcl_core:stonebrickmossy"] = 1
+	nodes["mcl_core:stone_smooth"] = 1
+	nodes["mcl_core:granite"] = 1
+	nodes["mcl_core:granite_smooth"] = 1
+	nodes["mcl_core:andesite"] = 1
+	nodes["mcl_core:andesite_smooth"] = 1
+	nodes["mcl_core:diorite"] = 1
+	nodes["mcl_core:diorite_smooth"] = 1
+	nodes["mcl_core:sandstone"] = 1
+	nodes["mcl_core:sandstonesmooth"] = 1
+	nodes["mcl_core:sandstonesmooth"] = 1
+	nodes["mcl_core:sandstonesmooth"] = 1
+	nodes["mcl_core:redsandstone"] = 1
+	nodes["mcl_core:redsandstonesmooth"] = 1
+	nodes["mcl_core:redsandstonecarved"] = 1
+	nodes["mcl_core:redsandstonesmooth2"] = 1
+	nodes["mcl_core:brick_block"] = 1
+	nodes["mcl_core:cobble"] = 1
+	nodes["mcl_core:mossycobble"] = 1
+	nodes["mcl_core:obsidian"] = 5
+	nodes["mcl_core:ice"] = 1
+	nodes["mcl_core:packed_ice"] = 1
+end
+
+-- Realtest MT5
+if mod_instruments then
+	local instruments = {}
+	instruments.materials = {"stone","bismuth","zinc","tin","copper","rose_gold","oroide","black_bronze","bismuth_bronze","tumbaga","bronze","aluminium","wrought_iron","german_silver","albata","steel","monel","black_steel"}
+	instruments.levels = {0,0,0,0,1,2,2,2,2,2,2,2,3,4,4,4,4,5}
+	for i, material in ipairs(instruments.materials) do
+		local level = instruments.levels[i]
+		tools["instruments:pick_" .. material] = level + 1
+	end
+end
+
+if mod_default and mod_grounds then
+	nodes["default:stone"] = 1
+	nodes["default:stone_bricks"] = 1
+	nodes["default:stone_macadam"] = 1
+	nodes["default:desert_stone"] = 1
+	nodes["default:desert_stone_bricks"] = 1
+	nodes["default:desert_stone_macadam"] = 1
+end
+
+if mod_ores then
+	local ores = {"lignite","anthracite","bituminous_coal","magnetite","hematite","limonite","bismuthinite","cassiterite","galena","garnierite","malachite","native_copper","native_gold","native_silver","native_platinum","sphalerite","tetrahedrite","lazurite","bauxite","cinnabar","cryolite","graphite","gypsum","jet","kaolinite","kimberlite","olivine","petrified_wood","saltpeter","satin_spar","selenite","serpentine","sylvite","tenorite"}
+	local ores_desert = {"native_copper","native_gold"}
+	for _, ore in ipairs(ores) do
+		nodes["ores:" .. ore .. "_in_default_stone"] = 1
+	end
+	for _, ore in ipairs(ores_desert) do
+		nodes["ores:" .. ore .. "_in_default_desert_stone"] = 1
+	end
+end
+
+-- mod support
 if mod_moreores then
 	tools["moreores:pick_silver"] = 3
 	tools["moreores:pick_mithril"] = 4
@@ -94,6 +189,14 @@ if mod_mobs_monster then
 	tools["mobs:pick_lava"] = 4
 end
 
+if mod_lavastuff and not mod_mobs_monster then
+	tools["lavastuff:pick"] = 4
+end
+
+if mod_obsidianstuff then
+	tools["obsidianstuff:pick"] = 4
+end
+
 if mod_caverealms then
 	nodes["caverealms:stone_with_algae"] = 1
 	nodes["caverealms:stone_with_lichen"] = 1
@@ -122,6 +225,11 @@ end
 
 if mod_pedology then
 	nodes["pedology:ice_white"] = 1
+end
+
+if mod_gloopblocks then
+	tools["gloopblocks:pick_cement"] = 3
+	tools["gloopblocks:pick_evil"] = 3
 end
 
 return {

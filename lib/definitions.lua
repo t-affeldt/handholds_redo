@@ -1,3 +1,13 @@
+local mod_default = minetest.get_modpath("default") ~= nil
+local mod_mcl_sounds = minetest.get_modpath("mcl_sounds") ~= nil
+
+local sounds = {  }
+if mod_default then
+	sounds = default.node_sound_stone_defaults()
+elseif mod_mcl_sounds then
+	sounds = mcl_sounds.node_sound_stone_defaults()
+end
+
 local node_box = {
 	type = "wallmounted",
 	wall_side = { -0.5, 0.5, -0.5, -0.49, -0.5, 0.5 },
@@ -23,7 +33,7 @@ minetest.register_node("handholds_redo:holds", {
 	is_ground_content = false,
 	node_box = node_box,
 	selection_box = node_box,
-	groups = { cracky = 3, attached_node = 1 },
-	sounds = default.node_sound_stone_defaults(),
+	groups = { cracky = 3, attached_node = 1, not_in_creative_inventory = 1 },
+	sounds = sounds,
 	drop = ""
 })
