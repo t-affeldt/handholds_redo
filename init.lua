@@ -18,7 +18,6 @@ function handholds.register_pick(name, level)
 	local placement_handler = def.on_place
 	minetest.override_item(name, {
 		on_place = function(...)
-			minetest.chat_send_all("blah")
 			utility.place_holds(...)
 			if placement_handler ~= nil then
 				placement_handler(...)

@@ -34,7 +34,6 @@ function utility.place_holds(itemstack, placer, pointed_thing)
 			or itemdef.groups.climbing_pick == nil then
 		return
 	end
-	minetest.chat_send_all(dump2(minetest.registered_nodes[minetest.get_node(pointed_thing.under).name], "node"))
 
 	if pointed_thing == nil or
 			pointed_thing.type ~= "node" or

@@ -230,6 +230,14 @@ end
 if mod_gloopblocks then
 	tools["gloopblocks:pick_cement"] = 3
 	tools["gloopblocks:pick_evil"] = 3
+
+	nodes["gloopblocks:basalt"] = 1
+	nodes["gloopblocks:cobble_road"] = 1
+	nodes["gloopblocks:cobble_road_mossy"] = 1
+	nodes["gloopblocks:pavement"] = 1
+	nodes["gloopblocks:pumice"] = 1
+	nodes["gloopblocks:stone_brick_mossy"] = 1
+	nodes["gloopblocks:stone_mossy"] = 1
 end
 
 return {
