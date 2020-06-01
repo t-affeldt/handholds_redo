@@ -2,9 +2,8 @@
 local mod_default = minetest.get_modpath("default") ~= nil
 
 -- MineClone 2
-local mod_mcl_tools = minetest.get_modpath("mcl_tools") ~= nil
 local mod_mcl_core = minetest.get_modpath("mcl_core") ~= nil
-local mod_moreores = minetest.get_modpath("moreores") ~= nil
+local mod_mcl_tools = minetest.get_modpath("mcl_tools") ~= nil
 
 -- Realtest MT5
 local mod_instruments = minetest.get_modpath("instruments") ~= nil
@@ -13,6 +12,7 @@ local mod_ores = minetest.get_modpath("ores") ~= nil
 local is_realtest = mod_instruments
 
 -- various mods
+local mod_moreores = minetest.get_modpath("moreores") ~= nil
 local mod_technic_worldgen = minetest.get_modpath("technic_worldgen") ~= nil
 local mod_bakedclay = minetest.get_modpath("bakedclay") ~= nil
 local mod_mobs_monster = minetest.get_modpath("mobs_monster") ~= nil
