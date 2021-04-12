@@ -20,7 +20,7 @@ function handholds.register_pick(name, level)
 		on_place = function(...)
 			utility.place_holds(...)
 			if placement_handler ~= nil then
-				placement_handler(...)
+				return placement_handler(...)
 			end
 		end,
 		groups = groups
