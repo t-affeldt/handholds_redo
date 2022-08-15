@@ -23,6 +23,7 @@ local mod_df_mapitems = minetest.get_modpath("df_mapitems") ~= nil
 local mod_df_underworld_items = minetest.get_modpath("df_underworld_items") ~= nil
 local mod_pedology = minetest.get_modpath("pedology") ~= nil
 local mod_gloopblocks = minetest.get_modpath("gloopblocks") ~= nil
+local mod_unique_ores = minetest.get_modpath("unique_ores") ~= nil
 
 local tools = { }
 local nodes = { }
@@ -238,6 +239,11 @@ if mod_gloopblocks then
 	nodes["gloopblocks:pumice"] = 1
 	nodes["gloopblocks:stone_brick_mossy"] = 1
 	nodes["gloopblocks:stone_mossy"] = 1
+end
+
+if mod_unique_ores then
+	tools["unique_ores:pick_"..string.split(unique_ores.strong_material, ":")[2]] = 1
+	tools["unique_ores:pick_"..string.split(unique_ores.regular_material, ":")[2]] = 1
 end
 
 return {
